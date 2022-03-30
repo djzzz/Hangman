@@ -41,13 +41,18 @@ namespace Hangman
                     }
 
                 }
-                else
+                else if(guess.Length > 1)
                 {
                     // do something to string inputed
                     if (!game.guessWord(guess))
                     {
                         Console.WriteLine($"Sorry {guess} was not the word");
                     }
+                }
+                else
+                {
+                    //not anything
+                    Console.WriteLine("Think you sended a blank guess");
                 }
             }
             if (game.getWin())
