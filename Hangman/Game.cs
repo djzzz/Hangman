@@ -8,19 +8,17 @@ namespace Hangman
         public int life { get; set; }
         public string word;
         private StringBuilder guessedLetters;
-        public char[] reaveler;
+        public char[] revealer;
         private bool win = false;
         private bool gameover = false;
         public Game(string word)
         {
             this.life = 10;
             this.word = word;
-            this.reaveler = new char[(word.Length )];
-            int id = 0;
-            foreach(char letter in this.reaveler)
+            this.revealer = new char[(word.Length)];
+            for (int i = 0; i < this.revealer.Length; i++)
             {
-                this.reaveler[id] = '_';
-                id++;
+                this.revealer[i] = '_';
             }
             this.guessedLetters = new StringBuilder();
         }
@@ -31,21 +29,15 @@ namespace Hangman
                 return false;
             }
             bool found = false;
-            if (word.Contains(letter))
+            for (int i = 0; i < word.Length; i++)
             {
-                int id = 0;
-                foreach (char c in word)
+                if (word[i] == letter)
                 {
-                    if(c == letter && this.reaveler[id] != letter)
-                    {
-                        this.reaveler[id] = letter;
-                        found = true;
-                    }
-                    id++;
+                    this.revealer[i] = letter;
+                    found = true;
                 }
-
             }
-            else
+            if(!found)
             {
                 life--;
             }
@@ -73,8 +65,9 @@ namespace Hangman
             {
                 gameover = true;
             }
-            string toCheck = new string(this.reaveler);
+            string toCheck = new string(this.revealer);
             bool isExist = toCheck.Contains('_');
+
             if (!isExist)
             {
                 gameover = true;

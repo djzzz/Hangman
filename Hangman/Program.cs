@@ -26,10 +26,9 @@ namespace Hangman
                 {
                     int lifes = game.getLife();
                     //for chars
-                    bool right = game.guessChar(guess[0]);
-                    if (right)
+                    if (game.guessChar(guess[0]))
                     {
-                        foreach (char c in game.reaveler)
+                        foreach (char c in game.revealer)
                         {
                             Console.Write(c + " ");
                             
@@ -45,18 +44,22 @@ namespace Hangman
                 else
                 {
                     // do something to string inputed
-                    bool right = game.guessWord(guess);
-                    if (!right)
+                    if (!game.guessWord(guess))
                     {
                         Console.WriteLine($"Sorry {guess} was not the word");
                     }
                 }
             }
-            bool win = game.getWin();
-            if (win)
+            if (game.getWin())
+            {
                 Console.WriteLine("Congrats you won the game");
-            if (!win)
+            }
+            else
+            {
                 Console.WriteLine("Game over! you lost");
+            }
+                
+                
 
         }
     }

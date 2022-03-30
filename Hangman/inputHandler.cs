@@ -14,8 +14,7 @@ namespace Hangman
         public string ReadInputString(string message)
         {
             Console.WriteLine(message);
-            string result = Console.ReadLine();
-            return result;
+            return Console.ReadLine();
         }
         public int ReadInputInt(string message, string succesMessage, string failedMessage)
         {
